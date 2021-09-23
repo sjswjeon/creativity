@@ -164,13 +164,13 @@
                             <span class="like-btn" th:onclick="|likePost(${board.id})|">
                                 <div class="material-icons" th:if="${#lists.contains(board.likedUsers, user)}" style="color:red;">favorite</div>
                                 <div class="material-icons"  th:unless="${#lists.contains(board.likedUsers, user)}">favorite</div>
-                                <span>1233</span>
+                                <span th:text="${#lists.size(board.likedUsers)}">1233</span>
                             </span>
                             <span><a th:href="@{/board/list}">BACK</a></span>
                             <span th:onclick="|deleteBoard(${board.id})|">DELETE</span>
                             <span class="modify-btn">MODIFY</span>
                         </div>
-                        <div class="comment-box">
+                        <div class="comment-box" id="comment-box">
                             <div>
                                 <span>Comments</span>
                                 <span th:text="${#lists.size(firstcomments)}">333</span>
@@ -193,9 +193,10 @@
                                             <span>comments</span>
                                             <span th:text="${#lists.size(comment.secondComments) - 1}">142</span>
                                         </div>
-                                        <div class="likes">
-                                            <span class="material-icons">favorite</span>
-                                            <span>1231</span>
+                                        <div class="likes" th:onclick="|likeComment(${comment.id})|">
+                                            <span class="material-icons" th:if="${#lists.contains(comment.likedUsers, user)}" style="color:red;">favorite</span>
+                                            <span class="material-icons" th:unless="${#lists.contains(comment.likedUsers, user)}">favorite</span>
+                                            <span th:text="${#lists.size(comment.likedUsers)}">1231</span>
                                         </div>
                                     </div>
 
@@ -207,9 +208,10 @@
                                                 <div style="color: gray;" th:text="${secondcomment.date}">2021.32.32 22:33:33</div>
                                             </div>
                                             <div class="btns">
-                                                <div class="likes">
-                                                    <span class="material-icons">favorite</span>
-                                                    <span>1231</span>
+                                                <div class="likes" th:onclick="|likeSecondComment(${secondcomment.id})|">
+                                                    <span class="material-icons" th:if="${#lists.contains(secondcomment.likedUsers, user)}" style="color:red;">favorite</span>
+                                                    <span class="material-icons" th:unless="${#lists.contains(secondcomment.likedUsers, user)}">favorite</span>
+                                                    <span th:classappend="${comment.id > 0} ? 'like-count'+${secondcomment.id}" th:text="${#lists.size(secondcomment.likedUsers)}">1231</span>
                                                 </div>
                                             </div>
                                         </div>

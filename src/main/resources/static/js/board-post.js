@@ -60,3 +60,24 @@ function likePost(id) {
         }
     });
 }
+
+// like comment
+function likeComment(id) {
+    $.ajax({
+        url: '/api/board/read/likecomment/' + id,
+        type: 'PUT',
+        success: function(result) {
+            $("#comment-box").load(location.href + " #comment-box");
+        }
+    })
+}
+// like second comment
+function likeSecondComment(id) {
+    $.ajax({
+        url: '/api/board/read/likecomment/' + id,
+        type: 'PUT',
+        success: function(result) {
+            $(".like-count"+id).load(window.location.href + " .like-count"+id);
+        }
+    });
+}

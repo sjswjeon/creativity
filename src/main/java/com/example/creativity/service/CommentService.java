@@ -64,4 +64,17 @@ public class CommentService {
         return firstComments;
     }
 
+    public Comment likeComment(Long id, String username) {
+        Comment comment = commentRepository.findById(id).orElse(null);
+        User user = userRepository.findByUsername(username);
+
+        if (comment.getLikedUsers().contains(user)) {
+            comment.getLikedUsers().remove(user);
+        } else {
+            comment.getLikedUsers().add(user);
+        }
+
+        return commentRepository.save(comment);
+    }
+
 }

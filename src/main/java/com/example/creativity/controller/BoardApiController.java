@@ -3,6 +3,7 @@ package com.example.creativity.controller;
 import com.example.creativity.Model.Board;
 import com.example.creativity.repository.BoardRepository;
 import com.example.creativity.service.BoardService;
+import com.example.creativity.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,9 @@ public class BoardApiController {
 
     @Autowired
     private BoardService boardService;
+
+    @Autowired
+    private CommentService commentService;
 
 
     @GetMapping("/board")
@@ -56,6 +60,12 @@ public class BoardApiController {
     void likeBoard(@PathVariable Long id, Authentication authentication) {
         String authenticationName = authentication.getName();
         boardService.likeBoard(id, authenticationName);
+    }
+
+    @PutMapping("/board/read/likecomment/{id}")
+    void likeComment(@PathVariable Long id, Authentication authentication) {
+        String authenticationName = authentication.getName();
+        commentService.likeComment(id, authenticationName);
     }
 
     @DeleteMapping("/board/{id}")

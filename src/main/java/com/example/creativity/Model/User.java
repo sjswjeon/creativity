@@ -37,4 +37,14 @@ public class User {
     @JoinColumn(name = "likedUsers")
     private List<Board> likedBoards;
 
+    @ManyToMany
+    @JoinColumn(name = "likedUsers")
+    private List<Comment> likedComments;
+
+    @OneToMany(mappedBy = "senderUser")
+    private List<Message> sentMessages = new ArrayList<>();
+
+    @OneToMany(mappedBy = "receiverUser")
+    private List<Message> receivedMessages = new ArrayList<>();
+
 }
