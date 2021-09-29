@@ -48,13 +48,13 @@ replyBtn.addEventListener('click', function() {
     isReplyOpen = !isReplyOpen;
     if (isReplyOpen) {
         gsap.to(replyPageEl, .4, {
-            left: '350px',
+            left: '-30px',
             boxShadow: '5px 5px 50px 10px #474747',
             opacity: 1
         })
     } else {
         gsap.to(replyPageEl, .4, {
-            left: '30px',
+            left: '-350px',
             boxShadow: 'none',
             opacity: 0.8
         })

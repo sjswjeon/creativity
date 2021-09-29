@@ -12,6 +12,9 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Long senderid;
+    private Long receiverid;
+
     private String sender;
     private String receiver;
     private String content;
@@ -19,10 +22,10 @@ public class Message {
     private boolean checked;
 
     @ManyToOne
-    @JoinColumn(name = "sender", insertable = false, updatable = false)
+    @JoinColumn(name = "senderid", insertable = false, updatable = false)
     private User senderUser;
 
     @ManyToOne
-    @JoinColumn(name = "receiver", insertable = false, updatable = false)
+    @JoinColumn(name = "receiverid", insertable = false, updatable = false)
     private User receiverUser;
 }

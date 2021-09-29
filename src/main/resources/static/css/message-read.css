@@ -355,21 +355,17 @@ main > .right-box .middle-container .message-container {
     position: relative;
 }
 
+
 main > .right-box .middle-container .message-container .message {
     background-color: white;
     height: 100%;
     width: 25%;
     position: absolute;
     z-index: 1;
-    left: 0;
+    left: -350px;
     border-radius: 10px;
     box-shadow: 5px 5px 50px 10px #474747;
-}
-
-main > .right-box .middle-container .message-container .message {
     transform: scale(1.3);
-    left: 30px;
-    z-index: 1;
 }
 
 main > .right-box .middle-container .message-container .message .message-inner {
@@ -434,7 +430,7 @@ main > .right-box .middle-container .message-container .message .message-inner .
 
 /* reply */
 main > .right-box .middle-container .message-container .message.reply {
-    left: 30px;
+    left: -350px;
     z-index: 0;
     box-shadow: none;
     opacity: 0;

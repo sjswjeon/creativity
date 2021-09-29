@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <!-- CSS -->
+   <link rel="stylesheet" th:href="@{/css/message.css}">
+   <link rel="stylesheet" href="/src/main/resources/static/css/message.css">
    <link rel="stylesheet" th:href="@{/css/message-read.css}">
    <link rel="stylesheet" href="/src/main/resources/static/css/message-read.css">
 
@@ -22,6 +24,8 @@
     <!-- JS -->
     <script defer th:src="@{/js/main.js}"></script>
    <script defer src="/src/main/resources/static/js/main.js"></script>
+    <script defer th:src="@{/js/message.js}"></script>
+   <script defer src="/src/main/resources/static/js/message.js"></script>
     <script defer th:src="@{/js/message-read.js}"></script>
    <script defer src="/src/main/resources/static/js/message-read.js"></script>
 
@@ -89,40 +93,10 @@
                 <!-- received -->
                 <div class="list-box received">
                     <ul>
-                        <li>
-                            <div class="list__username">user0123</div>
-                            <span class="list__content">this is a contentthis ishis is a contentthis ishis is a contentthis is a content</span>
-                            <span class="list__date">2012.33.33 33:33:33</span>
-                        </li>
-                        <li>
-                            <div class="list__username">user0123</div>
-                            <span class="list__content">this is a contentthis ishis is a contentthis ishis is a contentthis is a content</span>
-                            <span class="list__date">2012.33.33 33:33:33</span>
-                        </li>
-                        <li>
-                            <div class="list__username">user0123</div>
-                            <span class="list__content">this is a contentthis ishis is a contentthis ishis is a contentthis is a content</span>
-                            <span class="list__date">2012.33.33 33:33:33</span>
-                        </li>
-                        <li>
-                            <div class="list__username">user0123</div>
-                            <span class="list__content">this is a contentthis ishis is a contentthis ishis is a contentthis is a content</span>
-                            <span class="list__date">2012.33.33 33:33:33</span>
-                        </li>
-                        <li>
-                            <div class="list__username">user0123</div>
-                            <span class="list__content">this is a contentthis ishis is a contentthis ishis is a contentthis is a content</span>
-                            <span class="list__date">2012.33.33 33:33:33</span>
-                        </li>
-                        <li>
-                            <div class="list__username">user0123</div>
-                            <span class="list__content">this is a contentthis ishis is a contentthis ishis is a contentthis is a content</span>
-                            <span class="list__date">2012.33.33 33:33:33</span>
-                        </li>
-                        <li>
-                            <div class="list__username">user0123</div>
-                            <span class="list__content">this is a contentthis ishis is a contentthis ishis is a contentthis is a content</span>
-                            <span class="list__date">2012.33.33 33:33:33</span>
+                        <li th:each="receivedMessage : ${receivedMessages}">
+                            <div class="list__username" th:text="${receivedMessage.sender}">user0123</div>
+                            <span class="list__content"><a th:href="@{/message/read(id=${receivedMessage.id})}" th:text="${receivedMessage.content}">this is a contentthis ishis is a contentthis ishis is a contentthis is a content</a></span>
+                            <span class="list__date" th:text="${receivedMessage.date}">2012.33.33 33:33:33</span>
                         </li>
                     </ul>
                     <!-- Pagination -->
@@ -140,40 +114,10 @@
                 <!-- sent -->
                 <div class="list-box sent">
                     <ul>
-                        <li>
-                            <div class="list__username">receiver0123</div>
-                            <span class="list__content">this is a contentthis ishis is a contentthis ishis is a contentthis is a content</span>
-                            <span class="list__date">2012.33.33 33:33:33</span>
-                        </li>
-                        <li>
-                            <div class="list__username">user0123</div>
-                            <span class="list__content">this is a contentthis ishis is a contentthis ishis is a contentthis is a content</span>
-                            <span class="list__date">2012.33.33 33:33:33</span>
-                        </li>
-                        <li>
-                            <div class="list__username">user0123</div>
-                            <span class="list__content">this is a contentthis ishis is a contentthis ishis is a contentthis is a content</span>
-                            <span class="list__date">2012.33.33 33:33:33</span>
-                        </li>
-                        <li>
-                            <div class="list__username">user0123</div>
-                            <span class="list__content">this is a contentthis ishis is a contentthis ishis is a contentthis is a content</span>
-                            <span class="list__date">2012.33.33 33:33:33</span>
-                        </li>
-                        <li>
-                            <div class="list__username">user0123</div>
-                            <span class="list__content">this is a contentthis ishis is a contentthis ishis is a contentthis is a content</span>
-                            <span class="list__date">2012.33.33 33:33:33</span>
-                        </li>
-                        <li>
-                            <div class="list__username">user0123</div>
-                            <span class="list__content">this is a contentthis ishis is a contentthis ishis is a contentthis is a content</span>
-                            <span class="list__date">2012.33.33 33:33:33</span>
-                        </li>
-                        <li>
-                            <div class="list__username">user0123</div>
-                            <span class="list__content">this is a contentthis ishis is a contentthis ishis is a contentthis is a content</span>
-                            <span class="list__date">2012.33.33 33:33:33</span>
+                        <li th:each="sentMessage : ${sentMessages}">
+                            <div class="list__username" th:text="${sentMessage.receiver}">receiver0123</div>
+                            <span class="list__content" th:text="${sentMessage.content}">this is a contentthis ishis is a contentthis ishis is a contentthis is a content</span>
+                            <span class="list__date" th:text="${sentMessage.date}">2012.33.33 33:33:33</span>
                         </li>
                     </ul>
                     <!-- Pagination -->
@@ -189,29 +133,31 @@
                 </div>
             </div>
         </div>
+
         <div class="right-box">
             <div class="right-box__container">
                 <div class="top-container"></div>
                 <div class="middle-container">
                     <div class="message-container">
-                        <div class="message current">
+                        <div class="message">
                             <div class="message-inner">
                                 <div class="user">
                                     <div class="material-icons face">face</div>
                                     <div class="material-icons reply">reply</div>
-                                    <div class="username">user0123</div>
-                                    <div class ="date">2013.03.33 33:33:33</div>
+                                    <div class="username" th:text="${message.sender}">user0123</div>
+                                    <div class="date" th:text="${message.date}">2013.03.33 33:33:33</div>
                                 </div>
-                                <div class="content">
+                                <div class="content" th:text="${message.content}">
                                     dfdfasdfdfdfdfasdfdfdfdfasdfdfdfdfasdfdfdfdfasdfdfdf
                                 </div>
                             </div>
                         </div>
                         <div class="message reply">
                             <div class="message-inner">
-                                <form class="content">
-                                    <textarea></textarea>
-                                    <div class="send-btn">SEND</div>
+                                <form class="content" th:action="@{/message/new}" method="post">
+                                    <input type="hidden" name="receiver" th:value="${message.sender}">
+                                    <textarea name="content"></textarea>
+                                    <button type="submit" class="send-btn">SEND</button>
                                 </form>
                             </div>
                         </div>
@@ -219,6 +165,17 @@
                     </div>
                 </div>
                 <div class="bottom-container"></div>
+            </div>
+        </div>
+
+        <!-- new Message -->
+        <div class="new-message-container">
+            <div class="new-message__inner">
+                <form class="top-box" th:action="@{/message/new}" method="post">
+                    <input id="receiver" name="receiver" type="text" placeholder="Type username">
+                    <textarea name="content" placeholder="Type message"></textarea>
+                    <button type="submit" class="new-message-btn">SEND</button>
+                </form>
             </div>
         </div>
     </main>
