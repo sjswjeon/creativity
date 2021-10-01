@@ -6,6 +6,7 @@ $('.third-page').ready(function() {
 })
 
 // side menu Animation
+// side menu Animation
 var sideMenuBtn = document.querySelector('.side-menu-btn');
 var sideMenuPage = document.querySelector('.side-menu');
 var darkeningPage = document.querySelector('.darkening');
@@ -24,8 +25,10 @@ sideMenuBtn.addEventListener('click', function() {
             opacity: 1
         })
         gsap.to(sideMenuBtn, .4, {
-            color: 'rgb(255, 232, 189)',
-            borderColor: 'rgb(255, 232, 189)'
+            color: '#333',
+            borderColor: 'rgb(255, 232, 189)',
+            backgroundColor: 'rgb(255, 232, 189)',
+            rotate: '360deg'
         })
         gsap.to(webSiteNameEl, .4, {
             scale: 1.3,
@@ -41,13 +44,16 @@ sideMenuBtn.addEventListener('click', function() {
             opacity: 0
         })
         gsap.to(sideMenuBtn, .4, {
-            color: '#333',
-            borderColor: '#333'
+            color: 'rgb(255, 232, 189)',
+            borderColor: 'rgb(255, 232, 189)',
+            backgroundColor: 'transparent',
+            rotate: '-360deg'
+
         })
         gsap.to(webSiteNameEl, .4, {
             scale: 1,
             left: '20px',
-            color: '#333'
+            color: 'rgb(41, 85, 28)'
         })
     }
 })
@@ -62,8 +68,10 @@ darkeningPage.addEventListener('click', function() {
             opacity: 0
         })
         gsap.to(sideMenuBtn, .4, {
-            color: '#333',
-            borderColor: '#333'
+            color: 'rgb(255, 232, 189)',
+            borderColor: 'rgb(255, 232, 189)',
+            backgroundColor: 'transparent',
+            rotate: '-360deg'
         })
         gsap.to(webSiteNameEl, .4, {
             scale: 1,
@@ -1006,6 +1014,10 @@ var receivedMessagePage = document.querySelector('.third-page .received-message-
 var sentMessagePage = document.querySelector('.third-page .sent-message-page');
 var newMessageList = document.querySelector('.third-page .new-message-page');
 
+var receivedTitle = document.querySelector('.title.received');
+var sentTitle = document.querySelector('.title.sent');
+var newTitle = document.querySelector('.title.new');
+
 sentBtn.addEventListener('click', function() {
 
     if ($('.message-list__single-message.sent') != null) {
@@ -1040,6 +1052,18 @@ sentBtn.addEventListener('click', function() {
         left: '89%',
         display: 'none',
         opacity: 0
+    })
+
+    gsap.to(receivedTitle, .2, {
+        x: '-120px'
+    })
+
+    gsap.to(sentTitle, .2, {
+        x: '-120px'
+    })
+
+    gsap.to(newTitle, .2, {
+        x: '-120px'
     })
 })
 
@@ -1078,6 +1102,18 @@ receivedBtn.addEventListener('click', function() {
         display: 'none',
         opacity: 0
     })
+    
+    gsap.to(receivedTitle, .2, {
+        x: '0'
+    })
+
+    gsap.to(sentTitle, .2, {
+        x: '0'
+    })
+
+    gsap.to(newTitle, .2, {
+        x: '0'
+    })
 })
 
 writeNewMessageBtn.addEventListener('click', function() {
@@ -1098,5 +1134,18 @@ writeNewMessageBtn.addEventListener('click', function() {
         left: '10%',
         display: 'block',
         opacity: 1
+    })
+
+    
+    gsap.to(receivedTitle, .2, {
+        x: '-240px'
+    })
+
+    gsap.to(sentTitle, .2, {
+        x: '-240px'
+    })
+
+    gsap.to(newTitle, .2, {
+        x: '-240px'
     })
 })

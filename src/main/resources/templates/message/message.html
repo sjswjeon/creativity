@@ -127,14 +127,16 @@
         <div class="inner">
             <div class="left-container">
                 <div class="btns">
-                    <div>
-                        <div class="title">Received Messages</div>
-                        <div class="title">Sent Messages</div>
-                        <div class="title">New Message</div>
+                    <div class="titles">
+                        <div class="title received">Received Messages</div>
+                        <div class="title sent">Sent Messages</div>
+                        <div class="title new">New Message</div>
                     </div>
-                    <div class="material-icons received-message-btn">move_to_inbox</div>
-                    <div class="material-icons sent-message-btn">outbox</div>
-                    <div class="material-icons write-message-btn">rate_review</div>
+                    <div class="btns-group">
+                        <div class="material-icons received-message-btn">move_to_inbox</div>
+                        <div class="material-icons sent-message-btn">outbox</div>
+                        <div class="material-icons write-message-btn">rate_review</div>
+                    </div>
                 </div>
                 <ul class="received-page">
                     <li th:each="receivedMessage : ${receivedMessages}">

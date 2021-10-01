@@ -18,7 +18,9 @@ sideMenuBtn.addEventListener('click', function() {
         })
         gsap.to(sideMenuBtn, .4, {
             color: 'rgb(255, 232, 189)',
-            borderColor: 'rgb(255, 232, 189)'
+            borderColor: '#333',
+            backgroundColor: '#333',
+            rotate: '360deg'
         })
         gsap.to(webSiteNameEl, .4, {
             scale: 1.3,
@@ -35,7 +37,10 @@ sideMenuBtn.addEventListener('click', function() {
         })
         gsap.to(sideMenuBtn, .4, {
             color: '#333',
-            borderColor: '#333'
+            borderColor: '#333',
+            backgroundColor: 'transparent',
+            rotate: '-360deg'
+
         })
         gsap.to(webSiteNameEl, .4, {
             scale: 1,
@@ -56,7 +61,9 @@ darkeningPage.addEventListener('click', function() {
         })
         gsap.to(sideMenuBtn, .4, {
             color: '#333',
-            borderColor: '#333'
+            borderColor: '#333',
+            backgroundColor: 'transparent',
+            rotate: '-360deg'
         })
         gsap.to(webSiteNameEl, .4, {
             scale: 1,

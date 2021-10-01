@@ -60,8 +60,10 @@ darkeningPage.addEventListener('click', function() {
             opacity: 0
         })
         gsap.to(sideMenuBtn, .4, {
-            color: '#333',
-            borderColor: '#333'
+            color: 'rgb(255, 232, 189)',
+            borderColor: 'rgb(255, 232, 189)',
+            backgroundColor: 'transparent',
+            rotate: '-360deg'
         })
         gsap.to(webSiteNameEl, .4, {
             scale: 1,

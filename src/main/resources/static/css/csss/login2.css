@@ -143,7 +143,6 @@ body .main-page .top-nav {
 
     /* website-name */
 body .main-page .top-nav .website-name {
-    /* text-shadow: -.5px 0 rgb(255, 232, 189), 0 .5px rgb(255, 232, 189), .5px 0 rgb(255, 232, 189), 0 -.5px rgb(255, 232, 189); */
     z-index: 100;
     position: fixed;
     left: 20px;
@@ -180,11 +179,12 @@ body .main-page .top-nav .website-menu {
     top: 27px;
     right: 20px;
     z-index: 100;
+    color:rgb(255, 232, 189);
 }
 
 body .main-page .top-nav .website-menu .material-icons {
     border-radius: 50%;
-    border: 1px solid black;
+    border: 1px solid rgb(255, 232, 189);
     padding: 10px;
 }
 
@@ -245,7 +245,6 @@ body .main-page .middle-nav .graphic .oyster {
 body .login-page {
     height: 100vh;
     width: 100%;
-    opacity: .5;
     position: fixed;
     top: 0;
     left: 0;
@@ -258,7 +257,7 @@ body .login-page .inner {
 }
 
 body .login-page .inner .right-container {
-    background-color: #333;
+    background-color: rgba(3, 3, 3, 0.7);
     padding: 20%;
     position: relative;
 }
@@ -266,7 +265,7 @@ body .login-page .inner .right-container {
 body .login-page .inner .right-container form {
     width: 100%;
     height: 100%;
-    background-color: rgb(255, 232, 189);
+    background-color: rgb(255, 238, 208);
     border-radius: 10px;
     padding: 9%;
     box-sizing: border-box;
@@ -322,6 +321,11 @@ body .login-page .inner .right-container form .login-btn button {
     border: none;
     cursor: pointer;
     color: white;
+    transition: .2s;
+}
+
+body .login-page .inner .right-container form .login-btn button:hover {
+    background-color: rgb(21, 54, 21);
 }
 
 body .login-page .inner .right-container form p {
@@ -371,7 +375,13 @@ body .login-page .inner .right-container form .register-btn button {
     border: none;
     cursor: pointer;
     color: white;
+    transition: .2s;
 }
+
+body .login-page .inner .right-container form .register-btn button:hover {
+    background-color: rgb(21, 54, 21);
+}
+
 
 body .login-page .inner .right-container form p {
     text-align: center;
