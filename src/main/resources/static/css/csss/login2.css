@@ -1,6 +1,6 @@
 /* COMMON */
 html {
-    background-image: url(../image/main-background-image.jpg);
+    background-image: url(/image/main-background-image.jpg);
     background-size: cover;
     background-attachment: fixed;
     width: 100%;

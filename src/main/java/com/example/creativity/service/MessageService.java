@@ -47,4 +47,5 @@ public class MessageService {
 
         return user.getReceivedMessages();
     }
+
 }

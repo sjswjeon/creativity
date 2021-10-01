@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
 
-
     @GetMapping
     public String home() {
-        return "index2";
+        return "index";
     }
-
-
 }

@@ -26,15 +26,19 @@ public class BoardService {
         board.setUsername(username);
         board.setView(0L);
         board.setLikes(0L);
-        if (board.getDate().isEmpty()) {
-            board.setDate(date);
-            user.setPoint(user.getPoint()+100L);
-        }
+        board.setDate(date);
+
+        user.setPoint(user.getPoint() + 100L);
+//        if (board.getDate().isEmpty()) {
+//            board.setDate(date);
+//            user.setPoint(user.getPoint()+100L);
+//        }
 
         return boardRepository.save(board);
     }
 
-    public Board read(Board board) {
+    public Board read(Long boardId) {
+        Board board = boardRepository.findById(boardId).orElse(null);
         board.setView(board.getView()+1L);
         return boardRepository.save(board);
     }

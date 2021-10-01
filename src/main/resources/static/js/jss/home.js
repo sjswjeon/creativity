@@ -61,7 +61,7 @@ function toBoard() {
 
     var renewURL = location.href;
 
-    renewURL += '/board';
+    renewURL += '/board/list';
 
     history.pushState(null, null, url);
 }

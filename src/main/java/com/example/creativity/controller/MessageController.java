@@ -31,7 +31,7 @@ public class MessageController {
     private MessageRepository messageRepository;
 
     @GetMapping("/list")
-    public String list(Model model, Authentication authentication, @PageableDefault(size = 7, sort = "date", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String list(Model model, Authentication authentication, @PageableDefault(size = 11, sort = "date", direction = Sort.Direction.DESC) Pageable pageable) {
         String authenticationName = authentication.getName();
 //        List<Message> allSentMessages = messageService.findAllSentMessages(authenticationName);
 //        List<Message> receivedMessagesForRightBox = messageService.findAllReceivedMessages(authenticationName);

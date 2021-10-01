@@ -1,6 +1,7 @@
 package com.example.creativity.controller;
 
 import com.example.creativity.Model.Board;
+import com.example.creativity.Model.Comment;
 import com.example.creativity.repository.BoardRepository;
 import com.example.creativity.service.BoardService;
 import com.example.creativity.service.CommentService;
@@ -9,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -34,27 +36,10 @@ public class BoardApiController {
         return BoardRepository.save(newBoard);
     }
 
-//    @GetMapping("/board/{id}")
-//    Board one(@PathVariable Long id) {
-//
-//        return BoardRepository.findById(id)
-//                .orElseThrow(() -> new BoardNotFoundException(id));
-//    }
-//
-//    @PutMapping("/board/{id}")
-//    Board replaceBoard(@RequestBody Board newBoard, @PathVariable Long id) {
-//
-//        return BoardRepository.findById(id)
-//                .map(employee -> {
-//                    employee.setName(newBoard.getName());
-//                    employee.setRole(newBoard.getRole());
-//                    return BoardRepository.save(employee);
-//                })
-//                .orElseGet(() -> {
-//                    newBoard.setId(id);
-//                    return BoardRepository.save(newBoard);
-//                });
-//    }
+    @PutMapping("/board/read/{id}")
+    void addViewCount(@PathVariable Long id) {
+        boardService.read(id);
+    }
 
     @PutMapping("/board/read/like/{id}")
     void likeBoard(@PathVariable Long id, Authentication authentication) {

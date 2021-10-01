@@ -148,7 +148,7 @@
                                     <span class="trow__like material-icons">favorite</span>
                                     <span th:text="${board.likes}">13</span>
                                     <span class="trow__comment material-icons">textsms</span>
-                                    <span th:text="${#lists.size(firstcomments)}">33</span>
+<!--                                    <span th:text="${#lists.size(firstcomments)}">33</span>-->
                                 </span>
                             </div>
                             <div th:text="${board.username}">user1232</div>
@@ -173,7 +173,7 @@
                         <div class="comment-box" id="comment-box">
                             <div>
                                 <span>Comments</span>
-                                <span th:text="${#lists.size(firstcomments)}">333</span>
+<!--                                <span th:text="${#lists.size(firstcomments)}">333</span>-->
                             </div>
                             <form th:action="@{/board/read/firstcomment}" method="post">
                                 <input type="hidden" name="boardid" th:value="${board.id}">

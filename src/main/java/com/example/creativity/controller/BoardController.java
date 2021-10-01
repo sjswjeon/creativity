@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/board")
@@ -38,10 +39,15 @@ public class BoardController {
     private CommentService commentService;
 
     @GetMapping("/list")
-    public String list(Model model, @RequestParam(required = false, defaultValue = "") String searchText, @PageableDefault(size = 18, sort = "date", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String list(Model model, @RequestParam(required = false, defaultValue = "") String searchText, @PageableDefault(size = 10, sort = "date", direction = Sort.Direction.DESC) Pageable pageable, Authentication authentication) {
         Page<Board> boards = boardRepository.findByTitleContainingOrContentContaining(searchText, searchText, pageable);
         model.addAttribute("boards", boards);
         model.addAttribute("board", new Board());
+
+        String authenticationName = authentication.getName();
+        User user = userRepository.findByUsername(authenticationName);
+        model.addAttribute("user", user);
+
         return "board/list";
     }
 
@@ -52,26 +58,39 @@ public class BoardController {
         return "redirect:/board/list";
     }
 
-    @GetMapping("/read")
-    public String read(@RequestParam Long id, Model model, Authentication authentication) {
-        Board board = boardRepository.findById(id).orElse(null);
-        boardService.read(board);
-        List<Comment> allFirstComments = commentService.findAllFirstComments(board);
+    @GetMapping("/form")
+    public String form(Model model, @RequestParam(required = false, defaultValue = "") String searchText, @PageableDefault(size = 10, sort = "date", direction = Sort.Direction.DESC) Pageable pageable, Authentication authentication) {
+        Page<Board> boards = boardRepository.findByTitleContainingOrContentContaining(searchText, searchText, pageable);
+        model.addAttribute("boards", boards);
+        model.addAttribute("board", new Board());
+
         String authenticationName = authentication.getName();
         User user = userRepository.findByUsername(authenticationName);
-
         model.addAttribute("user", user);
-        model.addAttribute("board", board);
-        model.addAttribute("firstcomments", allFirstComments);
-        return "board/read";
+
+        return "board/write";
     }
+
+//    @GetMapping("/read")
+//    public String read(@RequestParam Long id, Model model, Authentication authentication) {
+//        Board board = boardRepository.findById(id).orElse(null);
+//        boardService.read(board);
+//        List<Comment> allFirstComments = commentService.findAllFirstComments(board);
+//        String authenticationName = authentication.getName();
+//        User user = userRepository.findByUsername(authenticationName);
+//
+//        model.addAttribute("user", user);
+//        model.addAttribute("board", board);
+//        model.addAttribute("firstcomments", allFirstComments);
+//        return "board/read";
+//    }
 
     @PostMapping("/read/firstcomment")
     public String firstComment(Comment comment, Authentication authentication) {
         String authenticationName = authentication.getName();
         commentService.save(comment, authenticationName);
 
-        return "redirect:/board/read?id=" + comment.getBoardid();
+        return "redirect:/board/list";
     }
 
     @PostMapping("/read/secondcomment")
@@ -79,6 +98,6 @@ public class BoardController {
         String authenticationName = authentication.getName();
         commentService.saveSecondComment(comment, authenticationName);
 
-        return "redirect:/board/read?id=" + comment.getBoardid();
+        return "redirect:/board/list";
     }
 }
