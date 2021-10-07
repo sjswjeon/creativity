@@ -346,7 +346,7 @@ body .third-page .left-container ul.new-message-page li form textarea {
 }
 
 body .third-page .left-container ul.new-message-page li form textarea::placeholder {
-    color: rgb(253, 255, 225);
+    color: rgb(207, 245, 196);
 }
 
 body .third-page .left-container ul.new-message-page li form button {
@@ -424,9 +424,8 @@ body .third-page .right-container .right-container__messages ul li {
     perspective: 600px;
 }
 
-body .third-page .right-container .right-container__messages ul li.focused .single-message {
-    background-color: #333;
-    color: white;
+body .third-page .right-container .right-container__messages ul li.clicked {
+    transform: scale(1.3);
 }
 
 body .third-page .right-container .right-container__messages ul li .single-message {

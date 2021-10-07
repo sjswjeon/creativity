@@ -140,7 +140,7 @@
                 </div>
                 <ul class="received-page">
                     <li th:each="receivedMessage : ${receivedMessages}">
-                        <div class="message-list__single-message" th:onmouseenter="|previewMessage(${receivedMessage.id})|">
+                        <div class="message-list__single-message" th:onmouseenter="|previewMessage(${receivedMessage.id},'received')|">
                             <div class="user-photo">
                                 <img src="/image/user-icon.jpg">
                             </div>
@@ -253,7 +253,7 @@
 
                 <ul class="sent-page">
                     <li th:each="sentMessage : ${sentMessages}">
-                        <div class="message-list__single-message sent" th:onmouseenter="|previewSentMessage(${sentMessage.id})|">
+                        <div class="message-list__single-message sent" th:onmouseenter="|previewMessage(${sentMessage.id},'sent')|">
                             <div class="user-photo">
                                 <img src="/image/user-icon.jpg">
                             </div>
@@ -378,7 +378,7 @@
                 <div class="title">MESSAGE</div>
                 <div class="right-container__messages">
                     <ul class="received-message-page">
-                        <li th:each="receivedMessage : ${receivedMessages}" class="message-li" th:classappend="${receivedMessage != null} ? 'received' + ${receivedMessage.id}" th:onclick="|mouseOverMessage(${receivedMessage.id})|">
+                        <li th:each="receivedMessage : ${receivedMessages}" class="message-li" th:classappend="${receivedMessage != null} ? 'received' + ${receivedMessage.id}" th:onclick="|previewMessage(${receivedMessage.id},'received')|">
                             <div class="single-message">
                                 <div class="user-photo">
                                     <img src="/image/user-icon.jpg">
@@ -387,7 +387,7 @@
                                     </div>
                                 </div>
                                 <div class="date" th:text="${receivedMessage.date}">2033.33.33 33:33:33</div>
-                                <div class="material-icons">reply</div>
+                                <div class="material-icons" th:onclick="reply( [[${receivedMessage.sender} ]] , [[${receivedMessage.content}]] )">reply</div>
                                 <div class="content" th:text="${receivedMessage.content}">this is a content.11</div>
                             </div>
                         </li>
@@ -524,7 +524,7 @@
                     </ul>
 
                     <ul class="sent-message-page">
-                        <li th:each="sentMessage : ${sentMessages}" class="message-li" th:classappend="${sentMessage != null} ? 'sent' + ${sentMessage.id}" th:onclick="|mouseOverSentMessage(${sentMessage.id})|">
+                        <li th:each="sentMessage : ${sentMessages}" class="message-li" th:classappend="${sentMessage != null} ? 'sent' + ${sentMessage.id}" th:onclick="|previewMessage(${sentMessage.id},'sent')|">
                             <div class="single-message">
                                 <div class="user-photo">
                                     <img src="/image/user-icon.jpg">
@@ -533,7 +533,7 @@
                                     </div>
                                 </div>
                                 <div class="date" th:text="${sentMessage.date}">2033.33.33 33:33:33</div>
-                                <div class="material-icons">reply</div>
+                                <div class="material-icons" th:onclick="reply( [[${sentMessage.receiver}]] )">reply</div>
                                 <div class="content" th:text="${sentMessage.content}">sent11</div>
                             </div>
                         </li>
@@ -676,6 +676,17 @@
     <div class="darkening">
 
     </div>
+
+    <script>
+        
+        // $('.third-page').ready(function() {
+        //     if ($('.message-list__single-message') != null) {
+        //         var firstReceivedMessageEl = $('.message-list__single-message');
+        //         firstReceivedMessageEl.trigger('mouseenter');
+        //     }
+        // })
+
+    </script>
 
 </body>
 </html>
