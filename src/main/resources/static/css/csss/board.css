@@ -502,6 +502,10 @@ body .second-page .board__right-container .board__right-container__inner .board_
     background-color: white;
     color: black;
 }
+
+body .second-page .board__right-container .board__right-container__inner .board__pagination ul li.disabled:hover {
+    text-align: center;
+}
     /*  */
 
 body .second-page .board__right-container .board__right-container__inner .board__pagination ul li a {
@@ -511,6 +515,11 @@ body .second-page .board__right-container .board__right-container__inner .board_
     height: 10px;
     top: 2px;
     color: #333;
+}
+
+body .second-page .board__right-container .board__right-container__inner .board__pagination ul li.disabled a {
+    pointer-events: none;
+    cursor: alias;
 }
 
 /* Board Write Page */

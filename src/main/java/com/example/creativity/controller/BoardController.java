@@ -44,6 +44,11 @@ public class BoardController {
         model.addAttribute("boards", boards);
         model.addAttribute("board", new Board());
 
+        int startPage = Math.max(1, boards.getPageable().getPageNumber() - 4);
+        int endPage = Math.min(boards.getTotalPages(), boards.getPageable().getPageNumber() + 4);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
+
         String authenticationName = authentication.getName();
         User user = userRepository.findByUsername(authenticationName);
         model.addAttribute("user", user);
