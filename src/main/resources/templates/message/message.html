@@ -249,6 +249,22 @@
 <!--                            <div class="date">2022.22.22 33:33:33</div>-->
 <!--                        </div>-->
 <!--                    </li>-->
+                    <div class="board__pagination">
+                        <ul>
+                            <li th:classappend="${receivedMessages.pageable.pageNumber == 0} or ${receivedMessages.totalElements == 0} ? 'disabled'">
+                                <a href="" th:href="@{/message/list(page = ${receivedMessages.pageable.pageNumber - 1})}">&laquo;</a>
+                            </li>
+                            <li th:unless="${receivedMessages.totalElements == 0}" th:each="i: ${#numbers.sequence(receivedStartPage, receivedEndPage)}" th:classappend="${receivedMessages.pageable.pageNumber == i-1} ? 'active'">
+                                <a href="" th:href="@{/message/list(page = ${i-1})}" th:text="${i}">1</a>
+                            </li>
+                            <li class="disabled" th:if="${receivedMessages.totalElements == 0}">
+                                <a class="page-link">1</a>
+                            </li>
+                            <li th:classappend="${receivedMessages.pageable.pageNumber == receivedMessages.totalPages-1} or ${receivedMessages.totalElements == 0} ? 'disabled'">
+                                <a href="" th:href="@{/message/list(page = ${receivedMessages.pageable.pageNumber + 1})}">&raquo;</a>
+                            </li>
+                        </ul>
+                    </div>
                 </ul>
 
                 <ul class="sent-page">
@@ -362,6 +378,22 @@
 <!--                            <div class="date">2022.22.22 33:33:33</div>-->
 <!--                        </div>-->
 <!--                    </li>-->
+                    <div class="board__pagination">
+                        <ul>
+                            <li th:classappend="${sentMessages.pageable.pageNumber == 0} or ${sentMessages.totalElements == 0} ? 'disabled'">
+                                <a href="" th:href="@{/message/list(page = ${sentMessages.pageable.pageNumber - 1})}">&laquo;</a>
+                            </li>
+                            <li th:unless="${sentMessages.totalElements == 0}" th:each="i: ${#numbers.sequence(sentStartPage, sentEndPage)}" th:classappend="${sentMessages.pageable.pageNumber == i-1} ? 'active'">
+                                <a href="" th:href="@{/message/list(page = ${i-1})}" th:text="${i}">1</a>
+                            </li>
+                            <li class="disabled" th:if="${sentMessages.totalElements == 0}">
+                                <a class="page-link">1</a>
+                            </li>
+                            <li th:classappend="${sentMessages.pageable.pageNumber == sentMessages.totalPages-1} or ${sentMessages.totalElements == 0} ? 'disabled'">
+                                <a href="" th:href="@{/message/list(page = ${sentMessages.pageable.pageNumber + 1})}">&raquo;</a>
+                            </li>
+                        </ul>
+                    </div>
                 </ul>
 
                 <ul class="new-message-page">

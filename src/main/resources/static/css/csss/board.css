@@ -497,14 +497,14 @@ body .second-page .board__right-container .board__right-container__inner .board_
 }
 
     /* hover */
-body .second-page .board__right-container .board__right-container__inner .board__pagination ul li:hover {
+body .second-page .board__right-container .board__right-container__inner .board__pagination ul li:hover:not(.disabled):not(.active) {
     transform: scale(1.3);
     background-color: white;
     color: black;
 }
 
-body .second-page .board__right-container .board__right-container__inner .board__pagination ul li.disabled:hover {
-    text-align: center;
+body .second-page .board__right-container .board__right-container__inner .board__pagination ul li.active {
+    background-color: rgb(122, 170, 126);
 }
     /*  */
 

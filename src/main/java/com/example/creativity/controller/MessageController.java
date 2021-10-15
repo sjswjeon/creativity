@@ -36,6 +36,16 @@ public class MessageController {
         Page<Message> allReceivedMessages = messageRepository.findAllByReceiver(authenticationName, pageable);
         Page<Message> allSentMessages = messageRepository.findAllBySender(authenticationName, pageable);
 
+        int receivedStartPage = Math.max(1, allReceivedMessages.getPageable().getPageNumber() - 4);
+        int receivedEndPage = Math.min(allReceivedMessages.getTotalPages(), allReceivedMessages.getPageable().getPageNumber() + 4);
+        model.addAttribute("receivedStartPage", receivedStartPage);
+        model.addAttribute("receivedEndPage", receivedEndPage);
+
+        int sentStartPage = Math.max(1, allReceivedMessages.getPageable().getPageNumber() - 4);
+        int sentEndPage = Math.min(allReceivedMessages.getTotalPages(), allReceivedMessages.getPageable().getPageNumber() + 4);
+        model.addAttribute("sentStartPage", sentStartPage);
+        model.addAttribute("sentEndPage", sentEndPage);
+
         model.addAttribute("sentMessages", allSentMessages);
         model.addAttribute("receivedMessages", allReceivedMessages);
 
