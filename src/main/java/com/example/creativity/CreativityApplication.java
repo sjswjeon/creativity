@@ -8,11 +8,6 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication
 public class CreativityApplication {
 
-//	@Override
-//	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-//		return application.sources(CreativityApplication.class);
-//	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(CreativityApplication.class, args);
 	}
