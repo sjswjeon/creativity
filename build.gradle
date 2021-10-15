@@ -4,21 +4,25 @@ plugins {
 	id 'java'
 }
 
-manifest {
-	attributes 'Main-Class': 'com.example.creativity.CreativityApplication'
-}
-
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '8'
 
-apply plugin: 'war'
+//apply plugin: 'war'
 
-bootWar {
-	archiveBaseName = "creativity"
-	archiveFileName = "creativity.war"
-	archiveVersion = "0.0.0"
+//apply plugin: 'Java'
+
+jar {
+	manifest {
+		attributes 'Main-Class': 'com.example.creativity.CreativityApplication'
+	}
 }
+//
+//bootWar {
+//	archiveBaseName = "creativity"
+//	archiveFileName = "creativity.war"
+//	archiveVersion = "0.0.0"
+//}
 
 configurations {
 	compileOnly {
